@@ -1,5 +1,3 @@
-#pragma once
-
 #include "gameconfig.h"
 #include "addresses.h"
 

@@ -19,3 +19,10 @@ namespace modules
 	inline CModule *hammer;
 #endif
 }
+
+class CGameConfig;
+
+namespace addresses
+{
+	bool Initialize(CGameConfig* g_GameConfig);
+}

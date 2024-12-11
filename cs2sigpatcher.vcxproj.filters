@@ -28,5 +28,6 @@
     </ClCompile>
     <ClCompile Include="gameconfig.cpp" />
     <ClCompile Include="mempatch.cpp" />
+    <ClCompile Include="addresses.cpp" />
   </ItemGroup>
 </Project>

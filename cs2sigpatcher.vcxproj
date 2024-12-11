@@ -59,6 +59,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="addresses.cpp" />
     <ClCompile Include="cs2sigpatcher.cpp" />
     <ClCompile Include="gameconfig.cpp" />
     <ClCompile Include="mempatch.cpp" />

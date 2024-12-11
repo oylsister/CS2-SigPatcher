@@ -34,6 +34,7 @@ for sdk_target in MMSPlugin.sdk_targets:
     'cs2sigpatcher.cpp',
     'gameconfig.cpp',
     'mempatch.cpp',
+    'addresses.cpp',
   ]
 
   binary.custom = [builder.tools.Protoc(protoc = sdk_target.protoc, sources = [
