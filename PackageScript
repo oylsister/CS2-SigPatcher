@@ -10,13 +10,10 @@ bin_folder = builder.AddFolder(bin_folder_path)
 for cxx in MMSPlugin.all_targets:
   if cxx.target.arch == 'x86_64':
     if cxx.target.platform == 'windows':
-      bin64_folder_path = os.path.join('addons', MMSPlugin.plugin_name, 'bin', 'win64')
+      bin64_folder_path = os.path.join('addons', MMSPlugin.plugin_name, 'bin')
       bin64_folder = builder.AddFolder(bin64_folder_path)
     elif cxx.target.platform == 'linux':
-      bin64_folder_path = os.path.join('addons', MMSPlugin.plugin_name, 'bin', 'linuxsteamrt64')
-      bin64_folder = builder.AddFolder(bin64_folder_path)
-    elif cxx.target.platform == 'mac':
-      bin64_folder_path = os.path.join('addons', MMSPlugin.plugin_name, 'bin', 'osx64')
+      bin64_folder_path = os.path.join('addons', MMSPlugin.plugin_name, 'bin')
       bin64_folder = builder.AddFolder(bin64_folder_path)
 
 pdb_list = []
@@ -47,3 +44,7 @@ builder.AddCopy(os.path.join(builder.buildPath, MMSPlugin.plugin_name + '.vdf'),
 with open(os.path.join(builder.buildPath, 'pdblog.txt'), 'wt') as fp:
   for line in pdb_list:
     fp.write(line.path + '\n')
+
+# Add CS2SigPatch specific files
+gamedata_folder = builder.AddFolder(os.path.join('addons', MMSPlugin.plugin_name, 'gamedata'))
+builder.AddCopy(os.path.join('gamedata', 'cs2sigpatcher.games.txt'), gamedata_folder)

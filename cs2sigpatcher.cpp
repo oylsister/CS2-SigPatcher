@@ -70,7 +70,7 @@ bool CS2SigPatcher::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen,
 
 	std::string gamedirname = CGameConfig::GetDirectoryName(gamedirpath.Get());
 
-	const char* gamedataPath = "addons/cs2fixes/gamedata/cs2fixes.games.txt";
+	const char* gamedataPath = "addons/cs2sigpatcher/gamedata/cs2sigpatcher.games.txt";
 	Message("Loading %s for game: %s\n", gamedataPath, gamedirname.c_str());
 
 	g_GameConfig = new CGameConfig(gamedirname, gamedataPath);
