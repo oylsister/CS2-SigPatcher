@@ -1,17 +1,3 @@
-/**
- * vim: set ts=4 sw=4 tw=99 noet :
- * ======================================================
- * Metamod:Source Sample Plugin
- * Written by AlliedModders LLC.
- * ======================================================
- *
- * This software is provided 'as-is', without any express or implied warranty.
- * In no event will the authors be held liable for any damages arising from 
- * the use of this software.
- *
- * This sample plugin is public domain.
- */
-
 #include <stdio.h>
 #include "cs2sigpatcher.h"
 #include "iserver.h"
@@ -31,8 +17,18 @@ CS2SigPatcher g_CS2SigPatcher;
 IServerGameDLL *server = NULL;
 IServerGameClients *gameclients = NULL;
 IVEngineServer *engine = NULL;
+IVEngineServer2* g_pEngineServer2 = nullptr;
 IGameEventManager2 *gameevents = NULL;
-ICvar *icvar = NULL;
+CGameConfig* g_GameConfig = nullptr;
+
+CMemPatch g_CommonPatches[] =
+{
+	CMemPatch("ServerMovementUnlock", "ServerMovementUnlock"),
+	CMemPatch("CheckJumpButtonWater", "FixWaterFloorJump"),
+	CMemPatch("WaterLevelGravity", "WaterLevelGravity"),
+	CMemPatch("CPhysBox_Use", "CPhysBox_Use"),
+	CMemPatch("BotNavIgnore", "BotNavIgnore"),
+};
 
 // Should only be called within the active game loop (i e map should be loaded and active)
 // otherwise that'll be nullptr!
@@ -46,19 +42,45 @@ CGlobalVars *GetGameGlobals()
 	return g_pNetworkServerService->GetIGameServer()->GetGlobals();
 }
 
+bool CS2SigPatcher::InitPatches(CGameConfig * g_GameConfig)
+{
+	bool success = true;
+	for (int i = 0; i < sizeof(g_CommonPatches) / sizeof(*g_CommonPatches); i++)
+	{
+		if (!g_CommonPatches[i].PerformPatch(g_GameConfig))
+			success = false;
+	}
+
+	return success;
+}
+
 PLUGIN_EXPOSE(CS2SigPatcher, g_CS2SigPatcher);
 bool CS2SigPatcher::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bool late)
 {
 	PLUGIN_SAVEVARS();
 
+	GET_V_IFACE_CURRENT(GetEngineFactory, g_pEngineServer2, IVEngineServer2, SOURCE2ENGINETOSERVER_INTERFACE_VERSION);
 	GET_V_IFACE_CURRENT(GetEngineFactory, engine, IVEngineServer, INTERFACEVERSION_VENGINESERVER);
-	GET_V_IFACE_CURRENT(GetEngineFactory, icvar, ICvar, CVAR_INTERFACE_VERSION);
 	GET_V_IFACE_ANY(GetServerFactory, server, IServerGameDLL, INTERFACEVERSION_SERVERGAMEDLL);
 	GET_V_IFACE_ANY(GetServerFactory, gameclients, IServerGameClients, INTERFACEVERSION_SERVERGAMECLIENTS);
 	GET_V_IFACE_ANY(GetEngineFactory, g_pNetworkServerService, INetworkServerService, NETWORKSERVERSERVICE_INTERFACE_VERSION);
 
-	// Currently doesn't work from within mm side, use GetGameGlobals() in the mean time instead
-	// gpGlobals = ismm->GetCGlobals();
+	CBufferStringGrowable<256> gamedirpath;
+	g_pEngineServer2->GetGameDir(gamedirpath);
+
+	std::string gamedirname = CGameConfig::GetDirectoryName(gamedirpath.Get());
+
+	const char* gamedataPath = "addons/cs2fixes/gamedata/cs2fixes.games.txt";
+	Message("Loading %s for game: %s\n", gamedataPath, gamedirname.c_str());
+
+	g_GameConfig = new CGameConfig(gamedirname, gamedataPath);
+	char conf_error[255] = "";
+	if (!g_GameConfig->Init(g_pFullFileSystem, conf_error, sizeof(conf_error)))
+	{
+		snprintf(error, maxlen, "Could not read %s: %s", g_GameConfig->GetPath().c_str(), conf_error);
+		Panic("%s\n", error);
+		return false;
+	}
 
 	// Required to get the IMetamodListener events
 	g_SMAPI->AddListener( this, this );
@@ -76,8 +98,10 @@ bool CS2SigPatcher::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen,
 
 	META_CONPRINTF( "All hooks started!\n" );
 
-	g_pCVar = icvar;
-	ConVar_Register( FCVAR_RELEASE | FCVAR_CLIENT_CAN_EXECUTE | FCVAR_GAMEDLL );
+	InitPatches(g_GameConfig);
+
+	if (g_GameConfig)
+		delete g_GameConfig;
 
 	return true;
 }
@@ -94,6 +118,32 @@ bool CS2SigPatcher::Unload(char *error, size_t maxlen)
 	SH_REMOVE_HOOK(IServerGameClients, ClientCommand, gameclients, SH_MEMBER(this, &CS2SigPatcher::Hook_ClientCommand), false);
 
 	return true;
+}
+
+void Message(const char* msg, ...)
+{
+	va_list args;
+	va_start(args, msg);
+
+	char buf[1024] = {};
+	V_vsnprintf(buf, sizeof(buf) - 1, msg, args);
+
+	ConColorMsg(Color(255, 0, 255, 255), "[CS2SigPatcher] %s", buf);
+
+	va_end(args);
+}
+
+void Panic(const char* msg, ...)
+{
+	va_list args;
+	va_start(args, msg);
+
+	char buf[1024] = {};
+	V_vsnprintf(buf, sizeof(buf) - 1, msg, args);
+
+	Warning("[CS2SigPatcher] %s", buf);
+
+	va_end(args);
 }
 
 void CS2SigPatcher::AllPluginsLoaded()

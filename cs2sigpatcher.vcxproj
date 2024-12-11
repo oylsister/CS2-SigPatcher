@@ -15,7 +15,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Default|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -34,7 +34,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Default|x64'">
     <ClCompile>
       <AdditionalOptions>/DSE_BLOODYGOODTIME=4 /DSE_BLADE=19 /DSE_BMS=11 /DSE_CONTAGION=15 /DSE_CS2=25 /DSE_CSGO=23 /DSE_CSS=6 /DSE_DARKMESSIAH=2 /DSE_DODS=8 /DSE_DOI=21 /DSE_DOTA=24 /DSE_EPISODEONE=1 /DSE_EYE=5 /DSE_HL2DM=7 /DSE_INSURGENCY=20 /DSE_LEFT4DEAD=13 /DSE_LEFT4DEAD2=16 /DSE_MCV=22 /DSE_MOCK=26 /DSE_NUCLEARDAWN=14 /DSE_ORANGEBOX=3 /DSE_PORTAL2=18 /DSE_PVKII=10 /DSE_SDK2013=9 /DSE_ALIENSWARM=17 /DSE_TF2=12 /DSOURCE_ENGINE=25 /Zi /std:c++17 /TP</AdditionalOptions>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);C:\Users\Oylsister\Documents\GitHub\CS2-SigPatcher;C:\Users\Oylsister\Documents\GitHub\metamod-source\core;C:\Users\Oylsister\Documents\GitHub\metamod-source\core\sourcehook;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\thirdparty/protobuf-3.21.8/src;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/engine;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/mathlib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/vstdlib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/tier0;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/tier1;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/entity2;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/game/server;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\game/shared;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\game/server;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\common</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)protobuf\generated;%(AdditionalIncludeDirectories);$(SolutionsDir);$(MMSOURCE112)\core;$(MMSOURCE112)\core\sourcehook;$(HL2SDKCS2)\thirdparty/protobuf-3.21.8/src;$(HL2SDKCS2)\public;$(HL2SDKCS2)\public/engine;$(HL2SDKCS2)\public/mathlib;$(HL2SDKCS2)\public/vstdlib;$(HL2SDKCS2)\public/tier0;$(HL2SDKCS2)\public/tier1;$(HL2SDKCS2)\public/entity2;$(HL2SDKCS2)\public/game/server;$(HL2SDKCS2)\game/shared;$(HL2SDKCS2)\game/server;$(HL2SDKCS2)\common</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;WIN32;_WINDOWS;META_IS_SOURCE2;COMPILER_MSVC;COMPILER_MSVC64;X64BITS;PLATFORM_64BITS</PreprocessorDefinitions>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -51,7 +51,7 @@
       <AdditionalIncludeDirectories>C:\Users\Oylsister\Documents\GitHub\CS2-SigPatcher;C:\Users\Oylsister\Documents\GitHub\metamod-source\core;C:\Users\Oylsister\Documents\GitHub\metamod-source\core\sourcehook;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\thirdparty/protobuf-3.21.8/src;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/engine;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/mathlib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/vstdlib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/tier0;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/tier1;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/entity2;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/game/server;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\game/shared;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\game/server;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>%(AdditionalDependencies);kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;legacy_stdio_definitions.lib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\lib/public/win64/2015/libprotobuf.lib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\lib/public/win64/mathlib.lib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\lib/public/win64/tier0.lib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\lib/public/win64/tier1.lib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\lib/public/win64/interfaces.lib</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies);kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;legacy_stdio_definitions.lib;$(HL2SDKCS2)\lib/public/win64/2015/libprotobuf.lib;$(HL2SDKCS2)\lib/public/win64/mathlib.lib;$(HL2SDKCS2)\lib/public/win64/tier0.lib;$(HL2SDKCS2)\lib/public/win64/tier1.lib;$(HL2SDKCS2)\lib/public/win64/interfaces.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetFileName)</OutputFile>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -59,11 +59,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\Oylsister\Documents\GitHub\CS2-SigPatcher\cs2sigpatcher.cpp" />
+    <ClCompile Include="cs2sigpatcher.cpp" />
+    <ClCompile Include="gameconfig.cpp" />
+    <ClCompile Include="mempatch.cpp" />
+    <ClCompile Include="utils\plat_unix.cpp" />
+    <ClCompile Include="utils\plat_win.cpp" />
   </ItemGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="addresses.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="cs2sigpatcher.h" />
+    <ClInclude Include="gameconfig.h" />
+    <ClInclude Include="mempatch.h" />
+    <ClInclude Include="utils\module.h" />
+    <ClInclude Include="utils\plat.h" />
+    <ClInclude Include="utils\plat_win.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
