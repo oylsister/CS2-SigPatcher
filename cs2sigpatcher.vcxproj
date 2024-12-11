@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Default|x64">
+      <Configuration>Default</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2BF862CA-B79D-11EF-ADAA-4438E8A179F7}</ProjectGuid>
+    <RootNamespace>cs2sigpatcher</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Default|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Default|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Default|x64'">$(ProjectName) - $(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Default|x64'">$(ProjectName) - $(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Default|x64'">true</LinkIncremental>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Default|x64'">cs2sigpatcher</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Default|x64'">
+    <ClCompile>
+      <AdditionalOptions>/DSE_BLOODYGOODTIME=4 /DSE_BLADE=19 /DSE_BMS=11 /DSE_CONTAGION=15 /DSE_CS2=25 /DSE_CSGO=23 /DSE_CSS=6 /DSE_DARKMESSIAH=2 /DSE_DODS=8 /DSE_DOI=21 /DSE_DOTA=24 /DSE_EPISODEONE=1 /DSE_EYE=5 /DSE_HL2DM=7 /DSE_INSURGENCY=20 /DSE_LEFT4DEAD=13 /DSE_LEFT4DEAD2=16 /DSE_MCV=22 /DSE_MOCK=26 /DSE_NUCLEARDAWN=14 /DSE_ORANGEBOX=3 /DSE_PORTAL2=18 /DSE_PVKII=10 /DSE_SDK2013=9 /DSE_ALIENSWARM=17 /DSE_TF2=12 /DSOURCE_ENGINE=25 /Zi /std:c++17 /TP</AdditionalOptions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);C:\Users\Oylsister\Documents\GitHub\CS2-SigPatcher;C:\Users\Oylsister\Documents\GitHub\metamod-source\core;C:\Users\Oylsister\Documents\GitHub\metamod-source\core\sourcehook;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\thirdparty/protobuf-3.21.8/src;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/engine;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/mathlib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/vstdlib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/tier0;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/tier1;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/entity2;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/game/server;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\game/shared;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\game/server;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\common</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;WIN32;_WINDOWS;META_IS_SOURCE2;COMPILER_MSVC;COMPILER_MSVC64;X64BITS;PLATFORM_64BITS</PreprocessorDefinitions>
+      <Optimization>Disabled</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
+      <OmitFramePointer>true</OmitFramePointer>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;WIN32;_WINDOWS;SE_BLOODYGOODTIME=4;SE_BLADE=19;SE_BMS=11;SE_CONTAGION=15;SE_CS2=25;SE_CSGO=23;SE_CSS=6;SE_DARKMESSIAH=2;SE_DODS=8;SE_DOI=21;SE_DOTA=24;SE_EPISODEONE=1;SE_EYE=5;SE_HL2DM=7;SE_INSURGENCY=20;SE_LEFT4DEAD=13;SE_LEFT4DEAD2=16;SE_MCV=22;SE_MOCK=26;SE_NUCLEARDAWN=14;SE_ORANGEBOX=3;SE_PORTAL2=18;SE_PVKII=10;SE_SDK2013=9;SE_ALIENSWARM=17;SE_TF2=12;META_IS_SOURCE2;SOURCE_ENGINE=25;COMPILER_MSVC;COMPILER_MSVC64;X64BITS;PLATFORM_64BITS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Oylsister\Documents\GitHub\CS2-SigPatcher;C:\Users\Oylsister\Documents\GitHub\metamod-source\core;C:\Users\Oylsister\Documents\GitHub\metamod-source\core\sourcehook;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\thirdparty/protobuf-3.21.8/src;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/engine;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/mathlib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/vstdlib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/tier0;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/tier1;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/entity2;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\public/game/server;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\game/shared;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\game/server;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies);kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;legacy_stdio_definitions.lib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\lib/public/win64/2015/libprotobuf.lib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\lib/public/win64/mathlib.lib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\lib/public/win64/tier0.lib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\lib/public/win64/tier1.lib;C:\Users\Oylsister\Documents\GitHub\hl2sdk\hl2sdk-cs2\lib/public/win64/interfaces.lib</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetFileName)</OutputFile>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Oylsister\Documents\GitHub\CS2-SigPatcher\cs2sigpatcher.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
