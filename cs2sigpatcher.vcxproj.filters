@@ -7,6 +7,12 @@
     <Filter Include="ambuild">
       <UniqueIdentifier>{7cb22332-2dbb-467a-ae7d-3189611538b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sdk">
+      <UniqueIdentifier>{e92cbd1d-49d8-4361-8e42-9cd422cb267c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gamedata">
+      <UniqueIdentifier>{859a3fdc-a985-4237-92f7-4a6780bf1857}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\module.h">
@@ -25,6 +31,33 @@
     <ClInclude Include="mempatch.h" />
     <ClInclude Include="cdetour.h" />
     <ClInclude Include="detours.h" />
+    <ClInclude Include="sdk\schema.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\entity\cbaseentity.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\entity\ctriggerpush.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="serversideclient.h" />
+    <ClInclude Include="clientframe.h" />
+    <ClInclude Include="netmessages.h" />
+    <ClInclude Include="sdk\entity\ccollisionproperty.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\entity\globaltypes.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\virtual.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\entity\cbasetrigger.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\entity\cbasemodelentity.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="utils\plat_unix.cpp">
@@ -38,6 +71,9 @@
     <ClCompile Include="addresses.cpp" />
     <ClCompile Include="cs2sigpatcher.cpp" />
     <ClCompile Include="detours.cpp" />
+    <ClCompile Include="sdk\schema.cpp">
+      <Filter>sdk</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="AMBuilder">
@@ -52,5 +88,10 @@
     <None Include="PackageScript">
       <Filter>ambuild</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="gamedata\cs2sigpatcher.games.txt">
+      <Filter>gamedata</Filter>
+    </Text>
   </ItemGroup>
 </Project>

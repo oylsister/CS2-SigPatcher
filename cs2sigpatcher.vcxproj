@@ -34,7 +34,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Default|x64'">
     <ClCompile>
       <AdditionalOptions>/DSE_BLOODYGOODTIME=4 /DSE_BLADE=19 /DSE_BMS=11 /DSE_CONTAGION=15 /DSE_CS2=25 /DSE_CSGO=23 /DSE_CSS=6 /DSE_DARKMESSIAH=2 /DSE_DODS=8 /DSE_DOI=21 /DSE_DOTA=24 /DSE_EPISODEONE=1 /DSE_EYE=5 /DSE_HL2DM=7 /DSE_INSURGENCY=20 /DSE_LEFT4DEAD=13 /DSE_LEFT4DEAD2=16 /DSE_MCV=22 /DSE_MOCK=26 /DSE_NUCLEARDAWN=14 /DSE_ORANGEBOX=3 /DSE_PORTAL2=18 /DSE_PVKII=10 /DSE_SDK2013=9 /DSE_ALIENSWARM=17 /DSE_TF2=12 /DSOURCE_ENGINE=25 /Zi /std:c++17 /TP</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(SolutionDir)funchook\include;$(SolutionDir)protobuf\generated;%(AdditionalIncludeDirectories);$(SolutionsDir);$(MMSOURCE112)\core;$(MMSOURCE112)\core\sourcehook;$(HL2SDKCS2)\thirdparty/protobuf-3.21.8/src;$(HL2SDKCS2)\public;$(HL2SDKCS2)\public/engine;$(HL2SDKCS2)\public/mathlib;$(HL2SDKCS2)\public/vstdlib;$(HL2SDKCS2)\public/tier0;$(HL2SDKCS2)\public/tier1;$(HL2SDKCS2)\public/entity2;$(HL2SDKCS2)\public/game/server;$(HL2SDKCS2)\game/shared;$(HL2SDKCS2)\game/server;$(HL2SDKCS2)\common</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)sdk\entity;$(SolutionDir)sdk;$(SolutionDir)funchook\include;$(SolutionDir)protobuf\generated;%(AdditionalIncludeDirectories);$(SolutionsDir);$(MMSOURCE112)\core;$(MMSOURCE112)\core\sourcehook;$(HL2SDKCS2)\thirdparty/protobuf-3.21.8/src;$(HL2SDKCS2)\public;$(HL2SDKCS2)\public/engine;$(HL2SDKCS2)\public/mathlib;$(HL2SDKCS2)\public/vstdlib;$(HL2SDKCS2)\public/tier0;$(HL2SDKCS2)\public/tier1;$(HL2SDKCS2)\public/entity2;$(HL2SDKCS2)\public/game/server;$(HL2SDKCS2)\game/shared;$(HL2SDKCS2)\game/server;$(HL2SDKCS2)\common</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;WIN32;_WINDOWS;META_IS_SOURCE2;COMPILER_MSVC;COMPILER_MSVC64;X64BITS;PLATFORM_64BITS</PreprocessorDefinitions>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -64,26 +64,41 @@
     <ClCompile Include="detours.cpp" />
     <ClCompile Include="gameconfig.cpp" />
     <ClCompile Include="mempatch.cpp" />
+    <ClCompile Include="sdk\schema.cpp" />
     <ClCompile Include="utils\plat_unix.cpp" />
     <ClCompile Include="utils\plat_win.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="addresses.h" />
     <ClInclude Include="cdetour.h" />
+    <ClInclude Include="clientframe.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="cs2sigpatcher.h" />
     <ClInclude Include="detours.h" />
     <ClInclude Include="gameconfig.h" />
     <ClInclude Include="mempatch.h" />
+    <ClInclude Include="netmessages.h" />
+    <ClInclude Include="sdk\entity\cbaseentity.h" />
+    <ClInclude Include="sdk\entity\cbasemodelentity.h" />
+    <ClInclude Include="sdk\entity\cbasetrigger.h" />
+    <ClInclude Include="sdk\entity\ccollisionproperty.h" />
+    <ClInclude Include="sdk\entity\ctriggerpush.h" />
+    <ClInclude Include="sdk\entity\globaltypes.h" />
+    <ClInclude Include="sdk\schema.h" />
+    <ClInclude Include="serversideclient.h" />
     <ClInclude Include="utils\module.h" />
     <ClInclude Include="utils\plat.h" />
     <ClInclude Include="utils\plat_win.h" />
+    <ClInclude Include="utils\virtual.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AMBuilder" />
     <None Include="AMBuildScript" />
     <None Include="configure.py" />
     <None Include="PackageScript" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="gamedata\cs2sigpatcher.games.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
