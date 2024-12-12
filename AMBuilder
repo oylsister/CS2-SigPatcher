@@ -13,18 +13,24 @@ for sdk_target in MMSPlugin.sdk_targets:
   binary = MMSPlugin.HL2Library(builder, cxx, MMSPlugin.plugin_name, sdk)
 
   binary.compiler.cxxincludes += [
+    os.path.join(builder.sourcePath, 'sdk'),
     os.path.join(builder.sourcePath, 'utils'),
+    os.path.join(builder.sourcePath, 'funchook', 'include'),
     os.path.join(sdk['path'], 'thirdparty', 'protobuf-3.21.8', 'src'),
   ]
 
   if binary.compiler.target.platform == 'linux':
     binary.compiler.postlink += [
       os.path.join(sdk['path'], 'lib', 'linux64', 'release', 'libprotobuf.a'),
+      os.path.join(builder.sourcePath, 'funchook', 'lib', 'Release', 'libfunchook.a'),
+      os.path.join(builder.sourcePath, 'funchook', 'lib', 'Release', 'libdistorm.a'),
     ]
     binary.sources += ['utils/plat_unix.cpp']
   elif binary.compiler.target.platform == 'windows':
     binary.compiler.postlink += [
       os.path.join('psapi.lib'),
+      os.path.join(builder.sourcePath, 'funchook', 'lib', 'Release', 'funchook.lib'),
+      os.path.join(builder.sourcePath, 'funchook', 'lib', 'Release', 'distorm.lib'),
       os.path.join(sdk['path'], 'lib' ,'public', 'win64', '2015', 'libprotobuf.lib'),
       os.path.join(sdk['path'], 'lib', 'public', 'win64', 'steam_api64.lib')
     ]
@@ -35,6 +41,8 @@ for sdk_target in MMSPlugin.sdk_targets:
     'gameconfig.cpp',
     'mempatch.cpp',
     'addresses.cpp',
+    'detours.cpp',
+    'sdk/schema.cpp'
   ]
 
   binary.custom = [builder.tools.Protoc(protoc = sdk_target.protoc, sources = [

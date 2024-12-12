@@ -31,5 +31,7 @@ bool addresses::Initialize(CGameConfig* g_GameConfig)
 	if (CommandLine()->HasParm("-tools"))
 		modules::hammer = new CModule(ROOTBIN, "tools/hammer");
 #endif
+	RESOLVE_SIG(g_GameConfig, "SetGroundEntity", addresses::SetGroundEntity);
+
 	return true;
 }

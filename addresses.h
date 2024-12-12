@@ -25,4 +25,5 @@ class CGameConfig;
 namespace addresses
 {
 	bool Initialize(CGameConfig* g_GameConfig);
+	inline void(FASTCALL* SetGroundEntity)(CBaseEntity* ent, CBaseEntity* ground, CBaseEntity* unk3);
 }

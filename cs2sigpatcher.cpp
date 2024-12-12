@@ -2,6 +2,7 @@
 #include "cs2sigpatcher.h"
 #include "iserver.h"
 #include "addresses.h"
+#include "detours.h"
 
 CS2SigPatcher g_CS2SigPatcher;
 IVEngineServer2 *g_pEngineServer2 = nullptr;
@@ -70,6 +71,7 @@ bool CS2SigPatcher::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen,
 
 	addresses::Initialize(g_GameConfig);
 	InitPatches(g_GameConfig);
+	InitDetours(g_GameConfig);
 
 	if (g_GameConfig)
 		delete g_GameConfig;

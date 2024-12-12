@@ -1,2 +1,2 @@
 # CS2-SigPatcher
- Patching signature for cs2
+ Compact version of CS2Fixes.

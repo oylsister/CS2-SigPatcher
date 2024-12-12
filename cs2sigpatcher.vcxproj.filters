@@ -4,6 +4,9 @@
     <Filter Include="utils">
       <UniqueIdentifier>{4874f672-1808-434e-934a-46361d6d0128}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ambuild">
+      <UniqueIdentifier>{7cb22332-2dbb-467a-ae7d-3189611538b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\module.h">
@@ -18,6 +21,10 @@
     <ClInclude Include="common.h" />
     <ClInclude Include="addresses.h" />
     <ClInclude Include="gameconfig.h" />
+    <ClInclude Include="cs2sigpatcher.h" />
+    <ClInclude Include="mempatch.h" />
+    <ClInclude Include="cdetour.h" />
+    <ClInclude Include="detours.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="utils\plat_unix.cpp">
@@ -29,5 +36,21 @@
     <ClCompile Include="gameconfig.cpp" />
     <ClCompile Include="mempatch.cpp" />
     <ClCompile Include="addresses.cpp" />
+    <ClCompile Include="cs2sigpatcher.cpp" />
+    <ClCompile Include="detours.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AMBuilder">
+      <Filter>ambuild</Filter>
+    </None>
+    <None Include="AMBuildScript">
+      <Filter>ambuild</Filter>
+    </None>
+    <None Include="configure.py">
+      <Filter>ambuild</Filter>
+    </None>
+    <None Include="PackageScript">
+      <Filter>ambuild</Filter>
+    </None>
   </ItemGroup>
 </Project>
